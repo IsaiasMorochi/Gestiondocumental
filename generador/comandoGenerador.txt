@@ -1,0 +1,24 @@
+2017_09_19_141044
+
+
+
+php artisan crud:generate Recorrido --fields_from_file="generador/recorrido.json" --view-path=admin --controller-namespace=Recorrido --route-group=admin
+php artisan crud:generate Lecturador --fields_from_file="generador/lecturador.json" --view-path=admin --controller-namespace=Lecturador --route-group=admin
+php artisan crud:generate Servicio --fields_from_file="generador/servicio.json" --view-path=admin --controller-namespace=Servicio --route-group=admin
+php artisan crud:generate Punto --fields_from_file="generador/punto.json" --view-path=admin --controller-namespace=Punto --route-group=admin
+php artisan crud:generate DetalleRecorrido --fields_from_file="generador/lecturador_recorrido.json" --view-path=admin --controller-namespace=Lecturador_Recorrido --route-group=admin
+php artisan crud:generate Medidor --fields_from_file="generador/medidor.json" --view-path=admin --controller-namespace=Medidor --route-group=admin
+php artisan crud:generate Lectura --fields_from_file="generador/lectura.json" --view-path=admin --controller-namespace=Lectura --route-group=admin
+php artisan crud:generate Instalacion --fields_from_file="generador/instalacion.json" --view-path=admin --controller-namespace=Instalacion --route-group=admin
+php artisan crud:generate Pago --fields_from_file="generador/pago.json" --view-path=admin --controller-namespace=Pago --route-group=admin
+php artisan crud:generate MedidorServicio --fields_from_file="generador/medidor_servicio.json" --view-path=admin --controller-namespace=Medidor_Servicio --route-group=admin
+php artisan crud:generate AvisoCobranza --fields_from_file="generador/aviso_cobranza.json" --view-path=admin --controller-namespace=Aviso_Cobranza --route-group=admin
+php artisan crud:generate DetalleAviso --fields_from_file="generador/detalle_aviso.json" --view-path=admin --controller-namespace=Detalle_Aviso --route-group=admin
+
+
+
+
+
+
+
+php artisan crud:generate Pago --fields_from_file="generador/pago.json" --view-path=admin --controller-namespace=Pago --route-group=admin

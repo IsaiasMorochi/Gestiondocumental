@@ -1,0 +1,64 @@
+{
+  "fields": [
+    {
+      "name": "cargo",
+      "type": "string"
+    },
+    {
+      "name": "estadoU",
+      "type": "integer"
+    },
+    {
+      "name": "id_institucion",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_comentario",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_users",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_sitio",
+      "type": "integer#unsigned"
+    }
+  ],
+   "foreign_keys": [
+    {
+      "column": "id_institucion",
+      "references": "id",
+      "on": "institucions",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_comentario",
+      "references": "id",
+      "on": "comentarios",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_users",
+      "references": "id",
+      "on": "users",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_sitio",
+      "references": "id",
+      "on": "sitios",
+      "onDelete": "cascade"
+    }
+  ],
+  "validations": [
+    {
+      "field": "cargo",
+      "rules": "required"
+    },
+    {
+      "field": "estadoU",
+      "rules": "required"
+    }
+  ]
+}

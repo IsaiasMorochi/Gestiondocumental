@@ -1,0 +1,42 @@
+{
+  "fields": [
+   {
+      "name": "estado",
+      "type": "select",
+      "options": ["Activo", "Inactivo"]
+   },
+    {
+      "name": "id_institucion",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_departamento",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_permiso",
+      "type": "integer#unsigned"
+    }
+  ],
+   "foreign_keys": [
+    {
+      "column": "id_institucion",
+      "references": "id",
+      "on": "institucions",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_departamento",
+      "references": "id",
+      "on": "departamentos",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_permiso",
+      "references": "id",
+      "on": "permisos",
+      "onDelete": "cascade"
+    }
+
+  ]
+}

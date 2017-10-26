@@ -1,0 +1,78 @@
+{
+  "fields": [
+    {
+      "name": "descripcion",
+      "type": "string"
+    },
+    {
+      "name": "porcentaje",
+      "type": "string"
+    },
+    {
+      "name": "fechaI",
+      "type": "date"
+    },
+    {
+      "name": "fechaF",
+      "type": "date"
+    },
+    {
+      "name": "prioridad",
+      "type": "string"
+    },
+    {
+      "name": "id_institucion",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_documento",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_users",
+      "type": "integer#unsigned"
+    }
+  ],
+   "foreign_keys": [
+    {
+      "column": "id_institucion",
+      "references": "id",
+      "on": "institucions",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_documento",
+      "references": "id",
+      "on": "documentos",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_users",
+      "references": "id",
+      "on": "users",
+      "onDelete": "cascade"
+    }
+  ],
+  "validations": [
+    {
+      "field": "descripcion",
+      "rules": "required|max:180"
+    },
+    {
+      "field": "porcentaje",
+      "rules": "required"
+    },
+    {
+      "field": "fechaI",
+      "rules": "required"
+    },
+    {
+      "field": "fechaF",
+      "rules": "required"
+    },
+    {
+      "field": "prioridad",
+      "rules": "required|max:25"
+    }
+  ]
+}

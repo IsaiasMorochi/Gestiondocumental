@@ -1,0 +1,37 @@
+{
+  "fields": [
+    {
+      "name": "descripcion",
+      "type": "string"
+    },
+    {
+      "name": "id_institucion",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_documento",
+      "type": "integer#unsigned"
+    }
+  ],
+   "foreign_keys": [
+    {
+      "column": "id_institucion",
+      "references": "id",
+      "on": "institucions",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_documento",
+      "references": "id",
+      "on": "documentos",
+      "onDelete": "cascade"
+    }
+
+  ],
+  "validations": [
+    {
+      "field": "descripcion",
+      "rules": "required|max:180"
+    }
+  ]
+}

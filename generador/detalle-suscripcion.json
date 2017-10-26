@@ -1,0 +1,43 @@
+{
+  "fields": [
+    {
+      "name": "estado",
+      "type": "select",
+      "options":["Activa", "Inactiva"]
+    },
+    {
+      "name": "id_institucion",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_suscripcion",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_documento",
+      "type": "integer#unsigned"
+    }
+
+  ],
+   "foreign_keys": [
+    {
+      "column": "id_institucion",
+      "references": "id",
+      "on": "institucions",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_suscripcion",
+      "references": "id",
+      "on": "suscripcions",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_documento",
+      "references": "id",
+      "on": "documentos",
+      "onDelete": "cascade"
+    }
+
+  ]
+}

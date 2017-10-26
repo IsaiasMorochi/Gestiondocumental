@@ -1,0 +1,41 @@
+{
+  "fields": [
+    {
+      "name": "estado",
+      "type": "select",
+      "options":["Activo", "Inactivo"]
+    },
+    {
+      "name": "id_institucion",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_grupo",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_privilegio",
+      "type": "integer#unsigned"
+    }
+  ],
+   "foreign_keys": [
+    {
+      "column": "id_institucion",
+      "references": "id",
+      "on": "institucions",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_grupo",
+      "references": "id",
+      "on": "grupos",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_privilegio",
+      "references": "id",
+      "on": "privilegios",
+      "onDelete": "cascade"
+    }
+  ]
+}

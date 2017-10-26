@@ -1,0 +1,56 @@
+{
+  "fields": [
+    {
+      "name": "fecha",
+      "type": "date"
+    },
+    {
+      "name": "id_institucion",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_documento",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_directorio",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_sitio",
+      "type": "integer#unsigned"
+    }
+  ],
+   "foreign_keys": [
+    {
+      "column": "id_institucion",
+      "references": "id",
+      "on": "institucions",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_documento",
+      "references": "id",
+      "on": "documentos",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_directorio",
+      "references": "id",
+      "on": "directorios",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_sitio",
+      "references": "id",
+      "on": "sitios",
+      "onDelete": "cascade"
+    }
+  ],
+  "validations": [
+    {
+      "field": "fecha",
+      "rules": "required"
+    }
+  ]
+}

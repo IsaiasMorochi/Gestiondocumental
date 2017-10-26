@@ -1,0 +1,48 @@
+{
+  "fields": [
+    {
+      "name": "fecha",
+      "type": "date"
+    },
+    {
+      "name": "hora",
+      "type": "time"
+    },
+    {
+      "name": "descripcionM",
+      "type": "string"
+    },
+    {
+      "name": "id_institucion",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_documento",
+      "type": "integer#unsigned"
+    }
+  ],
+   "foreign_keys": [
+    {
+      "column": "id_institucion",
+      "references": "id",
+      "on": "institucions",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_documento",
+      "references": "id",
+      "on": "documentos",
+      "onDelete": "cascade"
+    }
+  ],
+  "validations": [
+    {
+      "field": "fecha",
+      "rules": "required"
+    },
+    {
+      "field": "hora",
+      "rules": "required"
+    }
+  ]
+}

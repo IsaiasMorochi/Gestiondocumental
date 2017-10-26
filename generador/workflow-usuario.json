@@ -1,0 +1,54 @@
+{
+  "fields": [
+    {
+      "name": "descripcion",
+      "type": "string"
+    },
+    {
+      "name": "fecha",
+      "type": "date"
+    },
+    {
+      "name": "id_institucion",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_workflow",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "id_users",
+      "type": "integer#unsigned"
+    }
+  ],
+   "foreign_keys": [
+    {
+      "column": "id_institucion",
+      "references": "id",
+      "on": "institucions",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_workflow",
+      "references": "id",
+      "on": "workflows",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "id_users",
+      "references": "id",
+      "on": "users",
+      "onDelete": "cascade"
+    }
+  ],
+  "validations": [
+    {
+      "field": "descripcion",
+      "rules": "required|max:180"
+    },
+    {
+      "field": "fecha",
+      "rules": "required"
+    }
+  ]
+}

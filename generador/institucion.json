@@ -1,0 +1,33 @@
+{
+  "fields": [
+    {
+      "name": "nombre",
+      "type": "string"
+    },
+    {
+      "name": "nit",
+      "type": "integer"
+    },
+    {
+      "name": "estado",
+      "type": "select",
+      "options":["Activa", "Inactiva"]
+    },
+    {
+      "name": "tipo",
+      "type": "select",
+      "options":["Privada", "Publica"]
+    }
+    
+  ],
+  "validations": [
+    {
+      "field": "nombre",
+      "rules": "required|max:80"
+    },
+    {
+      "field": "nit",
+      "rules": "required"
+    }
+  ]
+}
