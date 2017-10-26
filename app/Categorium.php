@@ -12,6 +12,7 @@ class Categorium extends Model
      * @var string
      */
     protected $table = 'categorias';
+    
 
     /**
     * The database primary key value.
