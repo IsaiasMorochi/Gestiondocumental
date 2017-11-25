@@ -11,7 +11,8 @@
         "laravel/framework": "5.4.*",
         "laravel/homestead": "^6.5",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.4"
+        "laravelcollective/html": "^5.4",
+        "unisharp/laravel-filemanager": "~1.8"
     },
     "require-dev": {
         "barryvdh/laravel-dompdf": "^0.8.1",
