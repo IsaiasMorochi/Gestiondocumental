@@ -58,8 +58,8 @@ Route::resource('directorio', 'DirectorioController');
 Route::resource('detalle-suscripcion', 'DetalleSuscripcionController');
 
 
-Route::resource('sitio', 'SitioController');
-
+/*Route::resource('sitio', 'SitioController');*/
+Route::resource('SitioCompartido/GestionarSitio', 'SitioController');
 Route::resource('comentario', 'ComentarioController');
 Route::resource('detalle-sitio', 'DetalleSitioController');
 Route::resource('detalle-contenido', 'DetalleContenidoController');
@@ -90,6 +90,12 @@ Route::group(['prefix'=>'report'],function() {
 Route::get('admin/reporte','PdfController@index');
 
 Route::get('admin/GenerarReporte/{tipo}','ReporteController@docsReport');
+
+
+    Route::get('/laravel-filemanager', '\Unisharp\Laravelfilemanager\controllers\LfmController@show');
+    Route::post('/laravel-filemanager/upload', '\Unisharp\Laravelfilemanager\controllers\UploadController@upload');
+    // list all lfm routes here...
+
 
 /////////////////////rutas android////////////////////////////
 Route::group(['prefix'=>'apirest'],function(){

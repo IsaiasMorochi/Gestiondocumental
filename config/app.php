@@ -169,6 +169,8 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
 
 
@@ -243,6 +245,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 
         'PDF' => 'Barryvdh\DomPDF\Facade',
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

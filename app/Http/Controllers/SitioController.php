@@ -30,7 +30,7 @@ class SitioController extends Controller
             $sitio = Sitio::paginate($perPage);
         }
 
-        return view('GestionDocumental.sitio.index', compact('sitio'));
+        return view('SitioCompartido.GestionarSitio.indexx', compact('sitio'));
     }
 
     /**
@@ -40,7 +40,7 @@ class SitioController extends Controller
      */
     public function create()
     {
-        return view('GestionDocumental.sitio.create');
+        return view('SitioCompartido.GestionarSitio.create');
     }
 
     /**

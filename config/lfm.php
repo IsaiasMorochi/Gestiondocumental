@@ -12,7 +12,7 @@ return [
 
     // Middlewares which should be applied to all package routes.
     // For laravel 5.1 and before, remove 'web' from the array.
-    //'middlewares' => ['web', 'auth'],
+    'middlewares' => ['web', 'auth'],
 
     // The url to this package. Change it if necessary.
     'url_prefix' => 'laravel-filemanager',
@@ -34,10 +34,6 @@ return [
     // And set 'user_field' to App\Handler\ConfigHander::class
     // Ex: The private folder of user will be named as the user id.
     'user_field' => Unisharp\Laravelfilemanager\Handlers\ConfigHandler::class,
-
-    //'user_field' => function(){
-      //  return auth()->user()->id;
-   // },
 
     /*
     |--------------------------------------------------------------------------
