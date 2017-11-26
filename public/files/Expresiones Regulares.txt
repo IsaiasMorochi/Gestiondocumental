@@ -1,0 +1,23 @@
+﻿
+
+Direciones
+ (Calle | Av.| Avenida | Parque | Pasaje) (Ballivian|24 Septiembre| Toborochi| Los pozos| Sucre | Potosi | Primavera| Limon | Melchor Pinto| Libertad | Seoane) ([1-9][0-9][0-9]?)
+
+
+
+telefono
+ 70.000.000  ':'   79.999.999
+
+
+nit
+ 107.483.647
+ 109.483.647
+
+
+
+ (Clinica Moure | Hospital Japones | Clinica niño Jesus | Clinica Foianini | Caja nacional de Salud | Kolping | Clinica San Martin | Buena Salud | Cristianos Solidarios)
+
+
+
+categoria
+(Hermatologia| Cuagulograma| Bioquimico Sanguinea| Uruanalisis| Heces Fecales| Serologia-Inmunologia| Examenes Especiales| Mercadores Tumorales| Hormonas| Drogas Estupefacientes| Bactereologia){1}

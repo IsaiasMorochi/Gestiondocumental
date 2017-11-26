@@ -2,39 +2,8 @@
 @section('content')
 
 
-    {!!Form::open(array('url'=>'iniciodesesion','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}
-    {{Form::token()}}
-
-
-
-
-        {{--<div class="row">--}}
-            {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">--}}
-                {{--<div class="form-group">--}}
-                    {{--<label for="email">Nombre de Combo</label>--}}
-                    {{--<input type="email" name="email" required value="" class="form-control" placeholder="Descripcion....">--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">--}}
-                {{--<div class="form-group">--}}
-                    {{--<label for="password">Precio</label>--}}
-                    {{--<input type="password" name="password" required value="" class="form-control" placeholder="Precio....">--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="guardar">--}}
-                {{--<div class="form-group">--}}
-                    {{--<input name="_token" value="{{csrf_token()}}" type="hidden"></input>--}}
-                    {{--<button class="btn btn-primary" type="submit">Guardar</button>--}}
-                    {{--<button class="btn btn-danger" type="reset">Cancelar</button>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
-
-
-
-
-
+    {{--{!!Form::open(array('url'=>'iniciodesesion','method'=>'POST','autocomplete'=>'off','files'=>'true'))!!}--}}
+    {{--{{Form::token()}}--}}
 
     <div class="container">
         <div class="row">
@@ -94,6 +63,7 @@
                                     </a>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -102,5 +72,5 @@
     </div>
 
 
-    {!!Form::close()!!}
+    {{--{!!Form::close()!!}--}}
 @endsection
