@@ -35,9 +35,12 @@ return [
     // Ex: The private folder of user will be named as the user id.
     'user_field' => Unisharp\Laravelfilemanager\Handlers\ConfigHandler::class,
 
-    //'user_field' => function(){
-      //  return auth()->user()->id;
-   // },
+    'user_field' => function(){
+     error_reporting(E_ALL and E_NOTICE);
+           session_start();
+      return        $aa= $_SESSION['id'];
+    },
+
 
     /*
     |--------------------------------------------------------------------------

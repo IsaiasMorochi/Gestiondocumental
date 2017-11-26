@@ -1,9 +1,9 @@
 <?php
 
-$middleware = array_merge(\Config::get('lfm.middlewares'), [
+/*$middleware = array_merge(\Config::get('lfm.middlewares'), [
     '\Unisharp\Laravelfilemanager\middlewares\MultiUser',
     '\Unisharp\Laravelfilemanager\middlewares\CreateDefaultFolder',
-]);
+]);*/
 $prefix = \Config::get('lfm.url_prefix', \Config::get('lfm.prefix', 'laravel-filemanager'));
 $as = 'unisharp.lfm.';
 $namespace = '\Unisharp\Laravelfilemanager\controllers';
@@ -91,7 +91,7 @@ Route::group(compact('middleware', 'prefix', 'as', 'namespace'), function () {
         'as' => 'getDelete',
     ]);
 
-    // Route::get('/demo', 'DemoController@index');
+     Route::get('/demo', 'DemoController@index');
 });
 
 Route::group(compact('prefix', 'as', 'namespace'), function () {
