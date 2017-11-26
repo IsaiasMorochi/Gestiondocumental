@@ -12,7 +12,8 @@ class LoginController extends Controller
 {
     public function index(){
 
-        return view('AdmGeneral.InicioSesion.index');
+//        return view('AdmGeneral.InicioSesion.index');
+        return view('auth.passwords.login');
     }
 
     public function store(Request $request){
@@ -50,6 +51,13 @@ class LoginController extends Controller
             User::ObtenerInsertModElimModulo9();
             User::obteneriduser();
 
+
+            error_reporting(E_ALL and E_NOTICE);
+            session_start();
+            $_SESSION['id'] = DB::table('users')
+                ->select('users.id as id')
+                ->where('users.email','=',$_SESSION['email'])
+                ->first();
 
             error_reporting(E_ALL and E_NOTICE);
             session_start();

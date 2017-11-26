@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/categoria';
+    protected $redirectTo = '/AdmGeneral/GestionarInstitucion';
 
     /**
      * Create a new controller instance.
@@ -50,5 +50,11 @@ class LoginController extends Controller
         $bitacoraf->tabla="users";
         $bitacoraf->usuario="$a->nombre";
         event(new llamada($bitacoraf));
+
+
+
+
     }
+
+
 }

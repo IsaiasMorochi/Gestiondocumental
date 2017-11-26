@@ -58,8 +58,8 @@ Route::resource('directorio', 'DirectorioController');
 Route::resource('detalle-suscripcion', 'DetalleSuscripcionController');
 
 
-/*Route::resource('sitio', 'SitioController');*/
-Route::resource('SitioCompartido/GestionarSitio', 'SitioController');
+
+//Route::resource('SitioCompartido/GestionarSitio', 'SitioController');
 Route::resource('comentario', 'ComentarioController');
 Route::resource('detalle-sitio', 'DetalleSitioController');
 Route::resource('detalle-contenido', 'DetalleContenidoController');
@@ -92,8 +92,8 @@ Route::get('admin/reporte','PdfController@index');
 Route::get('admin/GenerarReporte/{tipo}','ReporteController@docsReport');
 
 
-    Route::get('/laravel-filemanager', '\Unisharp\Laravelfilemanager\controllers\LfmController@show');
-    Route::post('/laravel-filemanager/upload', '\Unisharp\Laravelfilemanager\controllers\UploadController@upload');
+    Route::get('/SitioCompartido/GestionarSitio', '\Unisharp\Laravelfilemanager\controllers\LfmController@show');
+    Route::post('/SitioCompartido/GestionarSitio/upload', '\Unisharp\Laravelfilemanager\controllers\UploadController@upload');
     // list all lfm routes here...
 
 

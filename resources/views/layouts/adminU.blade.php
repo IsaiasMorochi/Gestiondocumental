@@ -271,9 +271,11 @@ $a=$_SESSION['username'];?>
           </ol>
         </div> -->
       </div>
+      @yield('prueba')
       <div class="container clear_both padding_fix">
-          
+
         <div class="row">
+
           <div class="col-md-12">
             <div class="block-web">
               <!-- <div class="header">

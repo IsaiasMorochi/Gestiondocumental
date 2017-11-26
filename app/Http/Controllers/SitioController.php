@@ -30,7 +30,7 @@ class SitioController extends Controller
             $sitio = Sitio::paginate($perPage);
         }
 
-        return view('SitioCompartido.GestionarSitio.indexx', compact('sitio'));
+        return view('SitioCompartido.GestionarSitio.index', compact('sitio'));
     }
 
     /**
