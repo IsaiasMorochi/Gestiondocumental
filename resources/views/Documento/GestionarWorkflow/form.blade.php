@@ -41,6 +41,11 @@
         {!! $errors->first('id_documento', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+</div><div class="form-group {{ $errors->has('prioridad') ? 'has-error' : ''}}">
+    <div class="col-md-12">
+        <textarea class="ckeditor" name="textArea" id="textArea" cols="30" rows="10"></textarea>
+    </div>
+</div>
 
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">

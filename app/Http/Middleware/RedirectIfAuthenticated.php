@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Bitacora;
 use App\Events\llamada;
+use App\Http\Controllers\DirectorioController;
 use App\User;
 use Closure;
 use Illuminate\Http\Request;
@@ -23,7 +24,6 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         $this->store($request);
-       // $this->login($request);
         $this->act();
         if (Auth::guard($guard)->check()) {
 
@@ -94,12 +94,11 @@ class RedirectIfAuthenticated
             $bitacoraf->usuario=$a->nombre;
             event(new llamada($bitacoraf));
 
-            /* return json_encode(array("institucion"=>$prueba));*/
-
-//            return view('home');
-//        }else{
-//            return "NO SE PUDO";
-//        }
+            ///verificar si el q inicia ya tiene directorio para crearlo
+        $iduser = $_SESSION['id'];
+        if(!is_dir(public_path().'/files/'.$iduser->id)){
+            DirectorioController::crearDirPrincipales($iduser->id);
+        }
     }
 
     public function login(Request $request){

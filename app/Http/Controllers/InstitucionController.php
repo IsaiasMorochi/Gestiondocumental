@@ -33,6 +33,8 @@ class InstitucionController extends Controller
         }
 
         return view('AdmGeneral.GestionarInstitucion.index', compact('institucion'));
+        //$pass = bcrypt("123456");
+        //return json_encode(array("pass"=>$pass));
     }
 
     /**
