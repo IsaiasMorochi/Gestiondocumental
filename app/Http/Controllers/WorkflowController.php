@@ -165,7 +165,7 @@ class WorkflowController extends Controller
         $idcreador = $_SESSION['id'];
         $cont = 0;
         while($cont<count($users)){
-            WorkflowUsuario::insertar($descripciones[$cont],$var->id,$request->get('idworkflow'),$users[$cont]);
+            WorkflowUsuario::insertar($descripciones[$cont],$var->id,$request->get('idworkflow'),$users[$cont],$request->get('nameWork'));
             $this->copiarArchivo($request->get('nameWork'),$users[$cont],$idcreador->id);
             $cont++;
         }
@@ -190,7 +190,7 @@ class WorkflowController extends Controller
         //return $url;
     }
 
-    public function send_notification ($tokens, $message){
+    public static function send_notification ($tokens, $message){
             $url = 'https://fcm.googleapis.com/fcm/send';
             $fields = array(
                     'registration_ids' => $tokens,
@@ -222,6 +222,7 @@ class WorkflowController extends Controller
 
     public function copiarArchivo($fileName, $idasignado,$idcreador){
         if(!is_dir(public_path().'/files/'.$idasignado)){
+            ///falta sacar el grupo del usuario para pasar por parametro a la sig funcion
             DirectorioController::crearDirPrincipales($idasignado);
         }
         /////hay q arreglar estaparte no crea lacarpeta como si ya existiera
@@ -229,7 +230,6 @@ class WorkflowController extends Controller
         if(!is_dir(public_path().'/files/'.$idasignado.'/Workflow/Workflow Asignados/'.$fileName)){
             mkdir(public_path().'/files/'.$idasignado.'/Workflow/Workflow Asignados/'.$fileName,0777);
         }
-        /////
         ///movemos el archivo
         $sw = true; $cont=1;
         while ($sw && $cont>0){

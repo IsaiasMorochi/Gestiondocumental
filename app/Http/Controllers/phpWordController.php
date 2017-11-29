@@ -26,7 +26,7 @@ class phpWordController extends Controller
 
         }
 
-        return response()->download(public_path('testFile.docx'));
+        //return response()->download(public_path('testFile.docx'));
         //return json_encode(array("value"=>$parrafo4));
     }
 

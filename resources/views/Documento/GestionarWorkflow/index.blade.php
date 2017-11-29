@@ -13,7 +13,8 @@
                         <?php
                         error_reporting(E_ALL and E_NOTICE);
                         session_start();
-                        $a=$_SESSION['privbotonesmodulo2'];?>
+                        $a=$_SESSION['privbotonesmodulo2'];
+                            ?>
                         @foreach($a as $aa)
                             @if($aa->id == 7 and $aa->i == 1)
                         <a href="{{ url('Documento/GestionarWorkflow/create') }}" class="btn btn-success btn-sm" title="Add New Workflow">

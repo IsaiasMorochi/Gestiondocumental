@@ -26,6 +26,8 @@ class Directorio extends Model
      * @var array
      */
     protected $fillable = ['nombre', 'id_institucion', 'id_directorio'];
+    public static function verificar($ruta){
 
+    }
     
 }

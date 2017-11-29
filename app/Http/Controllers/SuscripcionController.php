@@ -104,15 +104,9 @@ class SuscripcionController extends Controller
         session_start();
         $inst = $_SESSION['institucion'];
         $iduser=$_SESSION['id'];
-        /*$inst = DB::table('institucions as i')
-                ->join('departamentos as d','d.id','=','i.id')
-            ->join('users as u','u.id_dpto','=','d.id')
-            ->select('i.id')
-            ->where('u.id','=',$iduser->id)
-            ->first();*/
-        //NO QUIERE INSERTAR XQ NO RECUPERA EL ID DE INSTITUCION
-        Suscripcion::insertar('activo',$inst->id,$iduser->id);
-        DetalleSuscripcion::insertar($inst->id,(DB::table('suscripcions')->select('id')->orderBy('id','desc')->first())->id,$substring);
+
+        $suscrip = Suscripcion::insertar('activo',$inst->id,$iduser->id);
+        DetalleSuscripcion::insertar($inst->id,$suscrip,$substring);
 
         return back();
         //return view ('Herramienta.ConsultarBitacora.index',["url"=>$inst->id,"pos"=>$iduser->id,"substring"=>(DB::table('suscripcions')->select('id')->orderBy('id','desc')->first())->id]);
