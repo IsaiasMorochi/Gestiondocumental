@@ -82,6 +82,7 @@ class User extends Authenticatable
                 'id_dpto'=>$request->get('id_dpto'),
                 'id_grupo'=>$id_grupo,
                 'email'=>$request->get('email'),
+                'password'=>bcrypt('123456')
             )
         );
     }
@@ -464,7 +465,7 @@ class User extends Authenticatable
         }
     }
 
-    public static function obteneriduser(){
+    public static function obteneriduser($email){
         error_reporting(E_ALL and E_NOTICE);
         session_start();
         $_SESSION['username'] = DB::table('users')

@@ -112,3 +112,4 @@ Route::group(['prefix'=>'apirest'],function(){
 
 Route::get('prueba','ComentarioController@prueba'); //puede borrar en cualquier momento
 
+Route::post('SitioCompartido/subs','SuscripcionController@subs');

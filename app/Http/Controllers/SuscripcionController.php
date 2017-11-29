@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\DetalleSuscripcion;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Suscripcion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
-
+use DB;
 class SuscripcionController extends Controller
 {
     /**
@@ -38,9 +40,13 @@ class SuscripcionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create($datos)
     {
-        return view('GestionDocumental.suscripcion.create');
+  //      return view('GestionDocumental.suscripcion.create');
+        echo $datos->path;
+    }
+    public function suscrib($datos){
+        echo json_encode(array("result"=>$datos));
     }
 
     /**
@@ -85,11 +91,36 @@ class SuscripcionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit($id)
-    {
-        $suscripcion = Suscripcion::findOrFail($id);
+    public function subs(Request $req){
+        $i = strpos($req->dato,"shares");
+        $str=$req->get('dato');
+        $c=0;$substring="";
+        while ($c<2 && $i>0){
+            if($str[$i]=='/') $c++;
+            $substring.=$str[$i];
+            $i++;
+        }
+        error_reporting(E_ALL and E_NOTICE);
+        session_start();
+        $inst = $_SESSION['institucion'];
+        $iduser=$_SESSION['id'];
+        /*$inst = DB::table('institucions as i')
+                ->join('departamentos as d','d.id','=','i.id')
+            ->join('users as u','u.id_dpto','=','d.id')
+            ->select('i.id')
+            ->where('u.id','=',$iduser->id)
+            ->first();*/
+        //NO QUIERE INSERTAR XQ NO RECUPERA EL ID DE INSTITUCION
+        Suscripcion::insertar('activo',$inst->id,$iduser->id);
+        DetalleSuscripcion::insertar($inst->id,(DB::table('suscripcions')->select('id')->orderBy('id','desc')->first())->id,$substring);
 
-        return view('GestionDocumental.suscripcion.edit', compact('suscripcion'));
+        return back();
+        //return view ('Herramienta.ConsultarBitacora.index',["url"=>$inst->id,"pos"=>$iduser->id,"substring"=>(DB::table('suscripcions')->select('id')->orderBy('id','desc')->first())->id]);
+    }
+    public function edit($datos)
+    {
+        return view ('Herramienta.ConsultarBitacora.index',["url"=>$datos]);
+
     }
 
     /**

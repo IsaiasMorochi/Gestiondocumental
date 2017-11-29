@@ -42,7 +42,16 @@ class DepartamentoController extends Controller
             }
 
         }
-        return view('SitioCompartido.GestionarDepartamento.index', compact('departamento'));
+        error_reporting(E_ALL and E_NOTICE);
+        session_start();
+        $institucion= $_SESSION['institucion'];
+        $institucion->id;
+
+        $casos = DB::table('cu')
+            ->where('id','=',22)
+            ->orWhere('id','=',13)->get();
+
+        return view('SitioCompartido.GestionarDepartamento.index', compact('departamento','casos'));
     }
 
     /**
@@ -95,8 +104,12 @@ class DepartamentoController extends Controller
 			'nombre' => 'required|max:180'
 		]);
         $requestData = $request->all();
-        
-        Departamento::create($requestData);
+
+        $dep = new Departamento();
+        $dep->id=(DB::table('departamentos')->select('id')->orderBy('id','desc')->first())->id+1;
+        $dep->nombre =$request->get('nombre');
+        $dep->id_institucion = $request->get('id_institucion');
+        $dep->save();
 
         Session::flash('flash_message', 'Departamento added!');
 

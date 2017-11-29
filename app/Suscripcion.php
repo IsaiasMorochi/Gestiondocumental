@@ -27,5 +27,11 @@ class Suscripcion extends Model
      */
     protected $fillable = ['descripcion', 'id_institucion', 'id_users'];
 
-    
+    public static function insertar($descripcion,$idinst,$iduser){
+        Suscripcion::create(array(
+            'descripcion'=>$descripcion,
+            'id_institucion'=>$idinst,
+            'id_users'=>$iduser
+        ));
+    }
 }
