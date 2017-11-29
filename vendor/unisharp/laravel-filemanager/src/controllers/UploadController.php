@@ -58,19 +58,31 @@ class UploadController extends LfmController
 
         return count($this->errors) > 0 ? $this->errors : parent::$success_response;
     }
-    //C:\SI2\github\fercho\Gestiondocumental\public\files\33\Workflow\Workflow Asignados\Workflow Semanal\doc.txt
+    ///:8000/files/shares/folder free/folder/folderinfolder/doc.txt
     private function getPath($fullpath){
         $bad_chars ="\\";
         $keywords = str_replace($bad_chars, '/', $fullpath);
         $pos = strpos($keywords,'Asignados')+10;
-        $bool = true; $substring="";
-        while($pos>0 && $bool){
-            if($keywords[$pos]=="/"){
-                $bool=false;
-            }else{
-                $substring.= $keywords[$pos];
+        if($pos>10) {
+            $bool = true;
+            $substring = "";
+            while ($pos > 0 && $bool) {
+                if ($keywords[$pos] == "/") {
+                    $bool = false;
+                } else {
+                    $substring .= $keywords[$pos];
+                }
+                $pos++;
             }
-            $pos++;
+        }else{
+            $i = strpos($keywords,"shares");
+            $c=0;$substring="";
+            while ($c<2 && $i>0){
+                if($keywords[$i+1]=='/') $c++;
+                $substring.=$keywords[$i];
+                $i++;
+            }
+
         }
         return $substring;
     }

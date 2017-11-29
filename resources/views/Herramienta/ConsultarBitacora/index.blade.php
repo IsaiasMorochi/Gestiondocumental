@@ -13,6 +13,7 @@
                     <h1>inst---{{$url}}</h1>
                     <h1>iduser---{{$pos}}</h1>
                     <h1>{{$substring}}</h1>
+                    <h1>{{$dato}}</h1>
                     {{--<table class="table table-striped table-bordered table-condensed table-hover">--}}
                         {{--<thead>--}}
                         {{--<th>#</th>--}}

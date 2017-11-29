@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Http\Controllers\WorkflowController;
+use Dompdf\Exception;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use DB;
@@ -60,16 +61,17 @@ class WorkflowUsuario extends Model
                 $tokens = array_prepend($tokens, $users[$i]->token);
             }
             $message = array("message" => "Se ah modificado el contenido de workflow:" . $path);
-            WorkflowController::send_notification($tokens,$message);
+                //WorkflowController::send_notification($tokens, $message);
         }
+        $tokens=array();
         if($shared->count()>0) {
             for ($i = 0; $i < sizeof($shared); $i++) {
                 $tokens = array_prepend($tokens, $shared[$i]->token);
             }
             $message = array("message" => "Se ah modificado el contenido de su suscripcion:" . $path);
-            WorkflowController::send_notification($tokens,$message);
+                //WorkflowController::send_notification($tokens, $message);
         }
-        return json_encode(array("tokens"=>$users));
+        return json_encode(array("tokens"=>$users,"shared"=>$shared));
     }
     
 }

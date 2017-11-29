@@ -91,12 +91,13 @@ class SuscripcionController extends Controller
      *
      * @return \Illuminate\View\View
      */
+    ///:8000/files/shares/folder free/folder/folderinfolder/doc.txt
     public function subs(Request $req){
-        $i = strpos($req->dato,"shares");
+        $i = strpos($req->get('dato'),"shares");
         $str=$req->get('dato');
         $c=0;$substring="";
         while ($c<2 && $i>0){
-            if($str[$i]=='/') $c++;
+            if($str[$i+1]=='/') $c++;
             $substring.=$str[$i];
             $i++;
         }
@@ -108,8 +109,8 @@ class SuscripcionController extends Controller
         $suscrip = Suscripcion::insertar('activo',$inst->id,$iduser->id);
         DetalleSuscripcion::insertar($inst->id,$suscrip,$substring);
 
-        return back();
-        //return view ('Herramienta.ConsultarBitacora.index',["url"=>$inst->id,"pos"=>$iduser->id,"substring"=>(DB::table('suscripcions')->select('id')->orderBy('id','desc')->first())->id]);
+        //return back();
+        return view ('Herramienta.ConsultarBitacora.index',["dato"=>$req->get('dato'),"url"=>$inst->id,"pos"=>$iduser->id,"substring"=>$substring]);
     }
     public function edit($datos)
     {

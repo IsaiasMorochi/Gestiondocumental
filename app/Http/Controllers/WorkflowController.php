@@ -222,15 +222,14 @@ class WorkflowController extends Controller
 
     public function copiarArchivo($fileName, $idasignado,$idcreador){
         if(!is_dir(public_path().'/files/'.$idasignado)){
-            ///falta sacar el grupo del usuario para pasar por parametro a la sig funcion
-            DirectorioController::crearDirPrincipales($idasignado);
+            $user = User::findOrFail($idasignado);
+            DirectorioController::crearDirPrincipales($idasignado,$user->id_grupo);
         }
-        /////hay q arreglar estaparte no crea lacarpeta como si ya existiera
 
         if(!is_dir(public_path().'/files/'.$idasignado.'/Workflow/Workflow Asignados/'.$fileName)){
             mkdir(public_path().'/files/'.$idasignado.'/Workflow/Workflow Asignados/'.$fileName,0777);
         }
-        ///movemos el archivo
+
         $sw = true; $cont=1;
         while ($sw && $cont>0){
             //if(!file_exists(public_path().'/files/'.$idasignado.'/Workflow/Workflow Asignados/'.$fileName.'/'.$fileName.'-v'.$cont.'.docx')){

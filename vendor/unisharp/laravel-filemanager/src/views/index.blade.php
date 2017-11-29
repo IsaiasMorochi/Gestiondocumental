@@ -4,6 +4,8 @@
         <div class="panel panel-default">
           <div class="panel-heading">Sitios</div>
           <div class="panel-heading">----{{$dato}}</div>
+
+          <div class="panel-heading">{{$ruta}}</div>
           <div class="panel-body">
 <!DOCTYPE html>
 <html lang="en">

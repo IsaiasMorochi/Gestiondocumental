@@ -1,0 +1,71 @@
+DOCUMENTO
+CATEGORIA
+ESTADO
+USUARIO
+DEPARTAMENTO
+INSTITUCION
+permiso
+permiso_departamento
+permiso_usuario
+historial
+workflow
+grupo
+workflow_usuario	
+privilegio
+privilegio_grupo
+suscripcion
+detalle_suscripcion
+sitio
+comentario
+detalle_sitio
+directorio
+detalle_contenido
+directorio_documento
+directorio
+
+ERRORES EN EL SCRIPT DE LA DB... VERIFICAR
+
+-workflow_usuario falta una foranea
+
+
+CASOS DE USO
+Gonzalo
+CU1.	Gestionar Institución
+CU2.	Gestionar Administrador
+CU3.	Gestionar Documento
+CU4.	Gestionar Sitio
+CU5.	Asignar Institución
+Isaias
+CU6.	Gestionar Workflow
+CU7.	Gestionar Departamento
+CU8.	Gestionar Usuario
+CU9.	Consultar Bitácora
+CU10.	Asignar Workflow
+Ivan
+CU11.	Gestionar Directorio
+CU12.	Gestionar Grupo
+CU13.	Subir Contenido
+CU14.	Asignar permiso usuario-documento
+CU15.	Asignar permiso departamento-documento
+Fernando
+CU16.	Asignar privilegio-grupo
+CU17.	Gestionar contenido-sitio
+CU18.	Asignar usuarios a sitio
+CU19.	Consultar Historial de documento
+CU20.	Asignar Estado
+Leonardo
+CU21.	Generar Reporte
+CU22.	Gestionar Categoría
+CU23.	Asignar Grupo
+CU24.	Realizar Suscripción
+Eduardo
+CU25.	Asignar Categoría
+CU26.	Lista de Usuarios Suscritos
+CU27.	Realizar Comentario
+CU28.	Administrar Perfil 
+
+
+
+
+
+Acomodar el if de los botones o revisar la consulta.

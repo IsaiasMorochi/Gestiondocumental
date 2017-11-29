@@ -33,7 +33,7 @@ class LfmController extends Controller
            $tok= WorkflowUsuario::verificar($path);
             $_SESSION['path']="";
         }
-        return view('laravel-filemanager::index',["dato"=>$tok]);
+        return view('laravel-filemanager::index',["dato"=>$tok,"ruta"=>$path]);
         //return $tok;
     }
 
