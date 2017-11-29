@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Controllers\phpWordController;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use DB;
@@ -43,5 +44,7 @@ class Workflow extends Model
             'id_documento'=>$request->get('id_documento'),
             'id_users'=>$id->id
         ));
+        phpWordController::makeWord($request,$id->id);
+        //phpWordController::makeWithTemplate($request,$id->id);
     }
 }

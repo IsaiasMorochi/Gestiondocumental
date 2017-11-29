@@ -7,7 +7,7 @@ use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Unisharp\Laravelfilemanager\Events\ImageIsUploading;
 use Unisharp\Laravelfilemanager\Events\ImageWasUploaded;
-
+use App\Directorio;
 /**
  * Class UploadController.
  */
@@ -58,14 +58,43 @@ class UploadController extends LfmController
 
         return count($this->errors) > 0 ? $this->errors : parent::$success_response;
     }
+    ///:8000/files/shares/folder free/folder/folderinfolder/doc.txt
+    private function getPath($fullpath){
+        $bad_chars ="\\";
+        $keywords = str_replace($bad_chars, '/', $fullpath);
+        $pos = strpos($keywords,'Asignados')+10;
+        if($pos>10) {
+            $bool = true;
+            $substring = "";
+            while ($pos > 0 && $bool) {
+                if ($keywords[$pos] == "/") {
+                    $bool = false;
+                } else {
+                    $substring .= $keywords[$pos];
+                }
+                $pos++;
+            }
+        }else{
+            $i = strpos($keywords,"shares");
+            $c=0;$substring="";
+            while ($c<2 && $i>0){
+                if($keywords[$i+1]=='/') $c++;
+                $substring.=$keywords[$i];
+                $i++;
+            }
 
+        }
+        return $substring;
+    }
     private function proceedSingleUpload($file)
     {
         $new_filename = $this->getNewName($file);
         $new_file_path = parent::getCurrentPath($new_filename);
-
         event(new ImageIsUploading($new_file_path));
         try {
+            error_reporting(E_ALL and E_NOTICE);
+            session_start();
+            $_SESSION['path']= $this->getPath($new_file_path);
             if (parent::fileIsImage($file) && !in_array($file->getMimeType(), ['image/gif', 'image/svg+xml'])) {
                 // Handle image rotation
                 Image::make($file->getRealPath())

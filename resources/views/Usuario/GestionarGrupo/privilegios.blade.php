@@ -44,7 +44,7 @@
                                             <button class="btn btn-danger" type="reset">Cancelar</button>
                                         </div>
                                     </div>
-                                    <input type="text" name="idgrupo" value="{{$item->id}}">
+                                    <input type="hidden" name="idgrupo" value="{{$item->id}}">
                                     {!! Form::close()!!}
                                 </div>
                             </div>

@@ -33,6 +33,10 @@ Route::group(compact('middleware', 'prefix', 'as', 'namespace'), function () {
         'uses' => 'UploadController@upload',
         'as' => 'upload',
     ]);
+    Route::any('/reg', [
+        'uses' => 'UploadController@reg',
+        'as' => 'reg',
+    ]);
 
     // list images & files
     Route::get('/jsonitems', [

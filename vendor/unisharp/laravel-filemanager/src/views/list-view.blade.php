@@ -24,6 +24,11 @@
           <a href="javascript:download('{{ $item->name }}')" title="{{ Lang::get('laravel-filemanager::lfm.menu-download') }}">
             <i class="fa fa-download fa-fw"></i>
           </a>
+          <form method="POST" action="{{ url('/SitioCompartido/subs') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+            {{ csrf_field() }}
+          <a href=""  title="Seguir este Doc."><button type="submit"><i class="fa fa-android fa-xs"></i></button></a>
+            <input type="hidden" value="{{$item->url}}" name="dato">
+          </form>
           @if($item->thumb)
             <a href="javascript:fileView('{{ $item->url }}', '{{ $item->updated }}')" title="{{ Lang::get('laravel-filemanager::lfm.menu-view') }}">
               <i class="fa fa-image fa-fw"></i>
@@ -36,13 +41,15 @@
             </a>
           @endif
         @endif
-        <a href="javascript:rename('{{ $item->name }}')" title="{{ Lang::get('laravel-filemanager::lfm.menu-rename') }}">
-          <i class="fa fa-edit fa-fw"></i>
-        </a>
+        {{--<a href="javascript:rename('{{ $item->name }}')" title="{{ Lang::get('laravel-filemanager::lfm.menu-rename') }}">--}}
+          {{--<i class="fa fa-edit fa-fw"></i>--}}
+        {{--</a>--}}
         <a href="javascript:trash('{{ $item->name }}')" title="{{ Lang::get('laravel-filemanager::lfm.menu-delete') }}">
           <i class="fa fa-trash fa-fw"></i>
         </a>
+
       </td>
+
     </tr>
     @endforeach
   </tbody>

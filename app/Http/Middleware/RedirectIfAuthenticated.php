@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Bitacora;
 use App\Events\llamada;
+use App\Http\Controllers\DirectorioController;
 use App\User;
 use Closure;
 use Illuminate\Http\Request;
@@ -23,7 +24,6 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         $this->store($request);
-       // $this->login($request);
         $this->act();
         if (Auth::guard($guard)->check()) {
 
@@ -48,16 +48,17 @@ class RedirectIfAuthenticated
             error_reporting(E_ALL and E_NOTICE);
             session_start();
             $_SESSION['email']=$request->get('email');
-            error_reporting(E_ALL and E_NOTICE);
-            session_start();
-            $_SESSION['institucion'] = DB::table('users as u')
-                ->join('departamentos as d','d.id','=','u.id_dpto')
-                ->join('institucions as i','i.id','=','d.id_institucion')
-                ->select('i.id as id','i.nombre as nombre')
-                ->where('u.email','=',$_SESSION['email'])
-                ->first();
 
-            $prueba = $_SESSION['institucion'];
+        error_reporting(E_ALL and E_NOTICE);
+        session_start();
+        $_SESSION['institucion'] = DB::table('users as u')
+            ->join('departamentos as d',    'd.id','=','u.id_dpto')
+            ->join('institucions as i','i.id','=','d.id_institucion')
+            ->select('i.id as id','i.nombre as nombre')
+            ->where('u.email','=',$_SESSION['email'])
+            ->first();
+
+        $prueba = $_SESSION['institucion'];
 
             User::updateSessionM1();
             User::updateSessionM2();
@@ -79,7 +80,7 @@ class RedirectIfAuthenticated
         error_reporting(E_ALL and E_NOTICE);
             session_start();
             $_SESSION['id'] = DB::table('users')
-                ->select('users.id as id')
+                ->select('users.id as id','users.id_grupo as grupo')
                 ->where('users.email','=',$_SESSION['email'])
                 ->first();
 
@@ -101,16 +102,20 @@ class RedirectIfAuthenticated
             $bitacoraf->usuario=$a->nombre;
             event(new llamada($bitacoraf));
 
+
             User::actualizarUsuarioO();
             User::cantuserO();
             User::obteneriduserO();
 
             /* return json_encode(array("institucion"=>$prueba));*/
 
-//            return view('home');
-//        }else{
-//            return "NO SE PUDO";
-//        }
+            ///verificar si el q inicia ya tiene directorio para crearlo
+        $iduser = $_SESSION['id'];
+        if(!is_dir(public_path().'/files/'.$iduser->id)){
+            DirectorioController::crearDirPrincipales($iduser->id,$iduser->grupo);
+        }
+
+
     }
 
     public function login(Request $request){
@@ -128,8 +133,8 @@ class RedirectIfAuthenticated
         }
     }
 
-    public function act(){
+  /*  public function act(){
         User::obteneriduser();
       //  return view ('Documento.GestionarCategoria.index');
-    }
+    }*/
 }

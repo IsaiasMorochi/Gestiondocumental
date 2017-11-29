@@ -21,6 +21,9 @@
                         <form method="POST" action="{{ url('Documento/sendnotificacion') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <input type="hidden" name="idworkflow" value="{{$idworkflow}}">
+                            @foreach($nameWork as $name )
+                            <input type="hidden" name="nameWork" value="{{$name->descripcion}}">
+                            @endforeach
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label for="iddescripcion">Descripcion</label>

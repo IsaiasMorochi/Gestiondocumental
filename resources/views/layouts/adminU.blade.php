@@ -556,7 +556,7 @@ $a=$_SESSION['username'];?>
 <script src="{{asset('admin/js/side-chats.js')}}"></script>
 <script src="{{asset('admin/js/jquery.slimscroll.min.js')}}"></script>
 <script src="{{asset('admin/plugins/scroll/jquery.nanoscroller.js')}}"></script>
-
+<script src="{{ asset('/vendor/ckeditor/ckeditor.js') }}"></script>
 
 
 </body>

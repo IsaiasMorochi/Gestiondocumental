@@ -67,7 +67,6 @@ class WorkflowController extends Controller
     public function store(Request $request)
     {
         Workflow::insertar($request);
-
         return redirect('Documento/GestionarWorkflow');
     }
 
@@ -152,7 +151,8 @@ class WorkflowController extends Controller
                     ->select('u.id','u.nombre','u.apellido')
                     ->where('i.id','=',$var->id)
                     ->get();
-        return view('Documento.GestionarWorkflow.asignacion',['idworkflow'=>$id,"usuarios"=>$usuarios]);
+        $nameWork = DB::table('workflows as wk')->select('wk.descripcion')->where('wk.id','=',$id)->get();
+        return view('Documento.GestionarWorkflow.asignacion',['idworkflow'=>$id,"usuarios"=>$usuarios,"nameWork"=>$nameWork]);
     }
 
 
@@ -162,9 +162,11 @@ class WorkflowController extends Controller
         error_reporting(E_ALL and E_NOTICE);
         session_start();
         $var = $_SESSION['institucion'];
+        $idcreador = $_SESSION['id'];
         $cont = 0;
         while($cont<count($users)){
-            WorkflowUsuario::insertar($descripciones[$cont],$var->id,$request->get('idworkflow'),$users[$cont]);
+            WorkflowUsuario::insertar($descripciones[$cont],$var->id,$request->get('idworkflow'),$users[$cont],$request->get('nameWork'));
+            $this->copiarArchivo($request->get('nameWork'),$users[$cont],$idcreador->id);
             $cont++;
         }
 
@@ -181,13 +183,14 @@ class WorkflowController extends Controller
 
         $message = array("message"=>"Se le a asignado un nueva tarea");
 
-        $r = $this->send_notification($tokens,$message);
+        $this->send_notification($tokens,$message);
 
 
         return Redirect::to('Documento/GestionarWorkflow');
+        //return $url;
     }
 
-    public function send_notification ($tokens, $message){
+    public static function send_notification ($tokens, $message){
             $url = 'https://fcm.googleapis.com/fcm/send';
             $fields = array(
                     'registration_ids' => $tokens,
@@ -215,5 +218,26 @@ class WorkflowController extends Controller
             
             curl_close($ch);
             return $result;
+    }
+
+    public function copiarArchivo($fileName, $idasignado,$idcreador){
+        if(!is_dir(public_path().'/files/'.$idasignado)){
+            $user = User::findOrFail($idasignado);
+            DirectorioController::crearDirPrincipales($idasignado,$user->id_grupo);
+        }
+
+        if(!is_dir(public_path().'/files/'.$idasignado.'/Workflow/Workflow Asignados/'.$fileName)){
+            mkdir(public_path().'/files/'.$idasignado.'/Workflow/Workflow Asignados/'.$fileName,0777);
+        }
+
+        $sw = true; $cont=1;
+        while ($sw && $cont>0){
+            //if(!file_exists(public_path().'/files/'.$idasignado.'/Workflow/Workflow Asignados/'.$fileName.'/'.$fileName.'-v'.$cont.'.docx')){
+            if(!file_exists(public_path().'/files/'.$idasignado.'/Workflow/Workflow Asignados/'.$fileName.'/'.$fileName.'docx')){
+                copy(public_path().'/files/'.$idcreador.'/Workflow/Workflow Creados/'.$fileName.'/'.$fileName.'.docx',public_path().'/files/'.$idasignado.'/Workflow/Workflow Asignados/'.$fileName.'/'.$fileName.'-v'.$cont.'.docx');
+                $sw=false;
+            }
+            $cont++;
+        }
     }
 }
