@@ -26,7 +26,7 @@ class Departamento extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'id_institucion'];
+    protected $fillable = ['id','nombre', 'id_institucion'];
 
     public function scope_getInstitucion($query)
     {

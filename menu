@@ -1,0 +1,23 @@
+while ( true ); do
+echo "====================================================="
+echo "================Artisan Interface Menu==============="
+echo "====================================================="
+
+echo "Options:"
+echo "1. Start Server localhost"
+echo "2. Make Controller"
+echo "3. Make Model"
+echo "4. Make Request"
+echo "5. Make Auth"
+echo "6. Artisan migration"
+echo "7. Exit"
+
+echo "3. Salir"
+read -p "Input a option: " op
+case $op in
+1) php artisan serve
+   exit;;
+2) echo "controller creado" ;;
+3) exit ;;
+esac
+done

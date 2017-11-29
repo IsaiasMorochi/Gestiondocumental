@@ -55,7 +55,7 @@
                                             $a=$_SESSION['privbotonesmodulo3'];?>
                                             @foreach($a as $aa)
                                                 @if($aa->id == 16 and $aa->m == 1)
-                                            <a href="{{ url('/SitioCompartido/GestionarDepartamento/' . $item->id . '/edit') }}" title="Edit Departamento"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></a>
+                                                        <a href="" data-target="#modal-privilegio-{{$item->id}}" data-toggle="modal"><button class="btn btn-primary btn-xs"><i class="fa fa-key" aria-hidden="true"></i>Privilegios </button></a>
                                                     @endif
                                                 @endforeach
 
@@ -72,6 +72,7 @@
                                             </form>
                                                     @endif
                                                 @endforeach
+                                                @include('SitioCompartido.GestionarDepartamento.privilegios',["casos"=>$casos])
                                         </td>
                                     </tr>
                                 @endforeach

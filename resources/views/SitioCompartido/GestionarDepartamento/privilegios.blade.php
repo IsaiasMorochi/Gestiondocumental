@@ -1,5 +1,5 @@
 <div class="modal fade modal-slide-in-right" aria-hidden="true"
-     role="dialog" tabindex="-1" id="modal-privilegios-{{$item->id}}">
+     role="dialog" tabindex="-1" id="modal-privilegio-{{$item->id}}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -45,6 +45,7 @@
                                         </div>
                                     </div>
                                     <input type="hidden" name="idgrupo" value="{{$item->id}}">
+
                                     {!! Form::close()!!}
                                 </div>
                             </div>

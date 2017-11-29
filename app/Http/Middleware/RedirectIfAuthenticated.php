@@ -48,16 +48,17 @@ class RedirectIfAuthenticated
             error_reporting(E_ALL and E_NOTICE);
             session_start();
             $_SESSION['email']=$request->get('email');
-            error_reporting(E_ALL and E_NOTICE);
-            session_start();
-            $_SESSION['institucion'] = DB::table('users as u')
-                ->join('departamentos as d','d.id','=','u.id_dpto')
-                ->join('institucions as i','i.id','=','d.id_institucion')
-                ->select('i.id as id','i.nombre as nombre')
-                ->where('u.email','=',$_SESSION['email'])
-                ->first();
 
-            $prueba = $_SESSION['institucion'];
+        error_reporting(E_ALL and E_NOTICE);
+        session_start();
+        $_SESSION['institucion'] = DB::table('users as u')
+            ->join('departamentos as d',    'd.id','=','u.id_dpto')
+            ->join('institucions as i','i.id','=','d.id_institucion')
+            ->select('i.id as id','i.nombre as nombre')
+            ->where('u.email','=',$_SESSION['email'])
+            ->first();
+
+        $prueba = $_SESSION['institucion'];
 
             User::updateSessionM1();
             User::updateSessionM2();
@@ -99,6 +100,7 @@ class RedirectIfAuthenticated
         if(!is_dir(public_path().'/files/'.$iduser->id)){
             DirectorioController::crearDirPrincipales($iduser->id);
         }
+
     }
 
     public function login(Request $request){
