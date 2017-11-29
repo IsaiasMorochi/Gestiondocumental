@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2017 a las 09:35:46
+-- Tiempo de generación: 29-11-2017 a las 19:13:32
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 7.0.10
 
@@ -216,7 +216,7 @@ CREATE TABLE `detalle_suscripcions` (
 --
 
 INSERT INTO `detalle_suscripcions` (`id`, `estado`, `id_institucion`, `id_suscripcion`, `id_documento`, `path`, `created_at`, `updated_at`) VALUES
-(1, '1', 13, 3, 1, 'shares/workflow/', '2017-11-29 19:34:43', '2017-11-29 19:34:43');
+(11, '1', 13, 6, 1, 'shares/folder free', '2017-11-30 04:09:43', '2017-11-30 04:09:43');
 
 -- --------------------------------------------------------
 
@@ -405,7 +405,8 @@ INSERT INTO `grupo_privilegios` (`id`, `estado`, `id_institucion`, `id_grupo`, `
 (115, '1', NULL, 14, 23, 0, 1, 0, '2017-11-25 20:47:45', '2017-11-25 20:47:45'),
 (118, '1', NULL, 14, 14, 0, 0, 1, '2017-11-25 20:47:45', '2017-11-25 20:47:45'),
 (120, '1', NULL, 14, 22, 0, 0, 1, '2017-11-25 20:47:45', '2017-11-25 20:47:45'),
-(121, '1', NULL, 2, 15, 1, 1, 1, '2017-11-26 21:52:47', '2017-11-26 21:52:47');
+(121, '1', NULL, 2, 15, 1, 1, 1, '2017-11-26 21:52:47', '2017-11-26 21:52:47'),
+(122, '1', NULL, 3, 15, 1, 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -629,7 +630,7 @@ CREATE TABLE `suscripcions` (
 --
 
 INSERT INTO `suscripcions` (`id`, `descripcion`, `id_institucion`, `id_users`, `created_at`, `updated_at`) VALUES
-(3, 'activo', 13, 33, '2017-11-29 19:34:43', '2017-11-29 19:34:43');
+(6, 'activo', 13, 33, '2017-11-30 04:09:43', '2017-11-30 04:09:43');
 
 -- --------------------------------------------------------
 
@@ -644,6 +645,7 @@ CREATE TABLE `users` (
   `genero` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ci` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `estado` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `online` tinyint(4) NOT NULL DEFAULT '0',
   `id_dpto` int(10) UNSIGNED DEFAULT NULL,
   `id_grupo` int(10) UNSIGNED DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -661,41 +663,41 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `nombre`, `apellido`, `genero`, `ci`, `estado`, `id_dpto`, `id_grupo`, `email`, `password`, `token`, `tema`, `cbarra`, `letra`, `remember_token`, `created_at`, `updated_at`) VALUES
-(7, 'jose', 'montaño', 'M', '8954', '1', NULL, 1, 'admin2@gmail.com', '', NULL, 'light_theme', 'green_thm', 'courier_f', NULL, '2017-10-20 21:08:07', '2017-10-24 19:32:35'),
-(8, 'Fernando', 'Montero', 'M', '54687', '1', 1, 2, 'fer@gmail.com', '', NULL, 'light_theme', 'green_thm', 'courier_f', NULL, '2017-10-21 06:52:48', '2017-10-21 00:32:39'),
-(10, 'Emanuel', 'Espinoza', 'M', '98572', '1', 1, 2, 'Emanuel@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 09:50:58', '2017-10-24 09:50:58'),
-(11, 'Ivan', 'Callizaya', 'M', '6589', '1', 1, 2, 'bola8@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 10:11:02', '2017-10-24 10:11:02'),
-(12, 'Gonzalo Aguilar', 'Perez', 'M', '654987', '1', 1, 2, 'Ganzo@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 10:15:17', '2017-10-24 10:15:17'),
-(13, 'Isaias', 'Morochi', 'M', '657', '1', 1, 2, 'escalvo@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 10:22:22', '2017-10-24 10:22:22'),
-(14, 'leo', 'ayala', 'M', '9933938', '1', 1, 3, 'leo@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 11:12:09', '2017-10-24 11:12:09'),
-(15, 'ivan', 'Callizaya', 'M', '8383738', '1', 1, 3, 'ivan@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 11:14:10', '2017-10-24 11:14:10'),
-(16, 'Isaias', 'Muruchi Martinez', 'M', '457689', '1', 2, 2, 'Marmutiadmin@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 19:40:32', '2017-10-24 19:40:32'),
-(17, 'Maritza', 'Yupanqui', 'F', '5648', '1', 1, 2, 'mary@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 12:08:27', '2017-10-25 12:08:27'),
-(18, 'Gonzalo Ulises', 'Aguilar', 'M', '6375221', '1', 3, 2, 'adminGonzalo@gmail.com', '', NULL, 'light_theme', 'green_thm', 'arial_f', NULL, '2017-10-25 18:47:55', '2017-10-25 18:48:50'),
-(19, 'Leonardo', 'Ayala Cayo', 'M', '11385389', '1', 4, 2, 'adminLeo@gmail.com', '', NULL, 'light_theme', 'blue_thm', 'arial_f', NULL, '2017-10-25 19:05:18', '2017-10-25 19:06:25'),
-(20, 'Richard', 'Lopez', 'M', '548963', '1', 6, 3, 'richi@gmail.com', '$2y$10$1cgVAb0RiWUg.Sptj8PgfulIb1jBSXc5FqlYi9fwy8Ijp/SFV6nSS', 'eZBYvC9P2UA:APA91bEptHfVlhWvjAzim0BpLyOAs2XERj8S-6YlB7cSnB4Qp3uy-z83_9BTfWLkcQrSmnjF17eeqadrVZd_Jv0idnn_ANY6qqzm3Q_ueCwDPllA_HJTgBRrg81mRGGwL2FQuhaqnydf', 'light_theme', 'yellow_thm', 'arial_f', 'u39StZF4hv0PDuDhOpKevPuUiRcFf7JFrQFgdyyk7sPQXZ3RwZ299Ia7cClg', '2017-10-25 19:19:22', '2017-10-25 19:19:22'),
-(21, 'Nuevo', 'limachi', 'M', '123456', '1', 6, 7, 'li@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 19:44:24', '2017-10-25 19:44:24'),
-(22, 'Leonela', 'Montaño Vargas', 'M', '549864', '1', 5, 7, 'Leonelita@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 20:17:43', '2017-10-25 20:17:43'),
-(23, 'Ivan', 'Callisaya', 'M', '65497', '1', 7, 2, 'adminIvan@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 20:45:27', '2017-10-25 20:45:27'),
-(24, 'Armando', 'Casas', 'M', '782146', '1', 8, 8, 'userArmando@gmail.com', '', NULL, 'light_theme', 'blue_thm', 'timesNewRoman_f', NULL, '2017-10-25 21:02:15', '2017-10-25 21:03:22'),
-(25, 'Isaias', 'Morochi', 'M', '5421789', '1', 10, 2, 'adminIsaias@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 21:19:57', '2017-10-25 21:19:57'),
-(26, 'user1', 'Cayo', 'M', '223423', '1', 11, 9, 'user1@gmail.com', '', NULL, 'light_theme', 'red_thm', 'courier_f', NULL, '2017-10-25 21:24:30', '2017-10-25 21:26:02'),
-(27, 'Grettel', 'Montaño', 'M', '657', '1', 6, 7, 'Gret@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 21:42:30', '2017-10-25 21:42:30'),
-(28, 'Juan', 'Jose', 'M', '456125', '1', 12, 10, 'Juan@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 21:51:44', '2017-10-25 21:51:44'),
-(29, 'Jose Eduardo', 'Montaño Banegas', 'M', '9827218', '1', 13, 2, 'adminEduardo@gmail.com', '', NULL, 'dark_theme', 'red_thm', 'courier_f', NULL, '2017-10-25 21:58:23', '2017-11-25 19:13:42'),
-(30, 'Pepito', 'Perez', 'M', '5648', '1', 14, 11, 'pepe@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 22:44:14', '2017-10-25 22:44:14'),
-(31, 'Andrea', 'Castellon', 'F', '985642', '1', 14, 11, 'Andy@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-26 00:54:02', '2017-10-26 00:54:02'),
-(33, 'Isaias', 'Morochi Sanca', 'M', '985647', '1', 15, 2, 'adminmorochi@gmail.com', '$2y$10$1cgVAb0RiWUg.Sptj8PgfulIb1jBSXc5FqlYi9fwy8Ijp/SFV6nSS', '', 'light_theme', 'yellow_thm', 'arial_f', '5JrTMhRgtmoInyFgdbdnnVRNkpJXNeZAONPSkkK2vAHTOgBFwJA4QP5vlJT8', '2017-10-26 08:04:33', '2017-10-26 08:04:33'),
-(34, 'Ivan', 'Limachi Callisaya', 'M', '654/78', '1', 16, 12, 'userivan@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-26 08:09:52', '2017-10-26 08:09:52'),
-(35, 'Leonardo', 'Ayala', 'M', '6579', '1', 16, 12, 'userleo@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-26 08:29:31', '2017-10-26 08:29:31'),
-(36, 'Fernando', 'Montero', 'M', '5765', '1', 16, 12, 'userfernando@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-26 08:30:29', '2017-10-26 08:30:29'),
-(37, 'Eduardo', 'Montaño', 'M', '354874', '1', 16, 12, 'usereduardo@gmail.com', '', NULL, 'light_theme', 'red_thm', 'courier_f', NULL, '2017-10-26 08:31:08', '2017-10-26 11:44:10'),
-(38, 'Gonzalo', 'Aguilar', 'M', '354985', '1', 16, 12, 'usergonzalo@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-26 08:31:59', '2017-10-26 08:31:59'),
-(39, 'Francisco', 'Moscoso', 'M', '654587', '1', 17, 2, 'frans@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-11-23 19:09:48', '2017-11-23 19:09:48'),
-(40, 'Roxana', 'Pardo Mamani', 'F', '457815', '1', 18, 13, 'Roxa@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-11-23 19:12:56', '2017-11-23 19:12:56'),
-(41, 'Jose Eduardo', 'Montaño Banegas', 'M', '9827218', '1', 19, 2, 'adminEdu@gmail.com', '', NULL, 'dark_theme', 'red_thm', 'courier_f', NULL, '2017-11-25 20:02:36', '2017-11-25 20:03:37'),
-(42, 'Manuel', 'Vargas', 'M', '548721', '1', 20, 14, 'manu@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-11-25 20:07:11', '2017-11-25 20:07:11');
+INSERT INTO `users` (`id`, `nombre`, `apellido`, `genero`, `ci`, `estado`, `online`, `id_dpto`, `id_grupo`, `email`, `password`, `token`, `tema`, `cbarra`, `letra`, `remember_token`, `created_at`, `updated_at`) VALUES
+(7, 'jose', 'montaño', 'M', '8954', '1', 0, NULL, 1, 'admin2@gmail.com', '', NULL, 'light_theme', 'green_thm', 'courier_f', NULL, '2017-10-20 21:08:07', '2017-10-24 19:32:35'),
+(8, 'Fernando', 'Montero', 'M', '54687', '1', 0, 1, 2, 'fer@gmail.com', '', NULL, 'light_theme', 'green_thm', 'courier_f', NULL, '2017-10-21 06:52:48', '2017-10-21 00:32:39'),
+(10, 'Emanuel', 'Espinoza', 'M', '98572', '1', 0, 1, 2, 'Emanuel@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 09:50:58', '2017-10-24 09:50:58'),
+(11, 'Ivan', 'Callizaya', 'M', '6589', '1', 0, 1, 2, 'bola8@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 10:11:02', '2017-10-24 10:11:02'),
+(12, 'Gonzalo Aguilar', 'Perez', 'M', '654987', '1', 0, 1, 2, 'Ganzo@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 10:15:17', '2017-10-24 10:15:17'),
+(13, 'Isaias', 'Morochi', 'M', '657', '1', 0, 1, 2, 'escalvo@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 10:22:22', '2017-10-24 10:22:22'),
+(14, 'leo', 'ayala', 'M', '9933938', '1', 0, 1, 3, 'leo@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 11:12:09', '2017-10-24 11:12:09'),
+(15, 'ivan', 'Callizaya', 'M', '8383738', '1', 0, 1, 3, 'ivan@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 11:14:10', '2017-10-24 11:14:10'),
+(16, 'Isaias', 'Muruchi Martinez', 'M', '457689', '1', 0, 2, 2, 'Marmutiadmin@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-24 19:40:32', '2017-10-24 19:40:32'),
+(17, 'Maritza', 'Yupanqui', 'F', '5648', '1', 0, 1, 2, 'mary@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 12:08:27', '2017-10-25 12:08:27'),
+(18, 'Gonzalo Ulises', 'Aguilar', 'M', '6375221', '1', 0, 3, 2, 'adminGonzalo@gmail.com', '', NULL, 'light_theme', 'green_thm', 'arial_f', NULL, '2017-10-25 18:47:55', '2017-10-25 18:48:50'),
+(19, 'Leonardo', 'Ayala Cayo', 'M', '11385389', '1', 0, 4, 2, 'adminLeo@gmail.com', '', NULL, 'light_theme', 'blue_thm', 'arial_f', NULL, '2017-10-25 19:05:18', '2017-10-25 19:06:25'),
+(20, 'Richard', 'Lopez', 'M', '548963', '1', 0, 6, 3, 'richi@gmail.com', '$2y$10$1cgVAb0RiWUg.Sptj8PgfulIb1jBSXc5FqlYi9fwy8Ijp/SFV6nSS', 'eZBYvC9P2UA:APA91bEptHfVlhWvjAzim0BpLyOAs2XERj8S-6YlB7cSnB4Qp3uy-z83_9BTfWLkcQrSmnjF17eeqadrVZd_Jv0idnn_ANY6qqzm3Q_ueCwDPllA_HJTgBRrg81mRGGwL2FQuhaqnydf', 'light_theme', 'yellow_thm', 'arial_f', 'u39StZF4hv0PDuDhOpKevPuUiRcFf7JFrQFgdyyk7sPQXZ3RwZ299Ia7cClg', '2017-10-25 19:19:22', '2017-10-25 19:19:22'),
+(21, 'Nuevo', 'limachi', 'M', '123456', '1', 0, 6, 7, 'li@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 19:44:24', '2017-10-25 19:44:24'),
+(22, 'Leonela', 'Montaño Vargas', 'M', '549864', '1', 0, 5, 7, 'Leonelita@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 20:17:43', '2017-10-25 20:17:43'),
+(23, 'Ivan', 'Callisaya', 'M', '65497', '1', 0, 7, 2, 'adminIvan@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 20:45:27', '2017-10-25 20:45:27'),
+(24, 'Armando', 'Casas', 'M', '782146', '1', 0, 8, 8, 'userArmando@gmail.com', '', NULL, 'light_theme', 'blue_thm', 'timesNewRoman_f', NULL, '2017-10-25 21:02:15', '2017-10-25 21:03:22'),
+(25, 'Isaias', 'Morochi', 'M', '5421789', '1', 0, 10, 2, 'adminIsaias@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 21:19:57', '2017-10-25 21:19:57'),
+(26, 'user1', 'Cayo', 'M', '223423', '1', 0, 11, 9, 'user1@gmail.com', '', NULL, 'light_theme', 'red_thm', 'courier_f', NULL, '2017-10-25 21:24:30', '2017-10-25 21:26:02'),
+(27, 'Grettel', 'Montaño', 'M', '657', '1', 0, 6, 7, 'Gret@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 21:42:30', '2017-10-25 21:42:30'),
+(28, 'Juan', 'Jose', 'M', '456125', '1', 0, 12, 10, 'Juan@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 21:51:44', '2017-10-25 21:51:44'),
+(29, 'Jose Eduardo', 'Montaño Banegas', 'M', '9827218', '1', 0, 13, 2, 'adminEduardo@gmail.com', '', NULL, 'dark_theme', 'red_thm', 'courier_f', NULL, '2017-10-25 21:58:23', '2017-11-25 19:13:42'),
+(30, 'Pepito', 'Perez', 'M', '5648', '1', 0, 14, 11, 'pepe@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-25 22:44:14', '2017-10-25 22:44:14'),
+(31, 'Andrea', 'Castellon', 'F', '985642', '1', 0, 14, 11, 'Andy@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-26 00:54:02', '2017-10-26 00:54:02'),
+(33, 'Isaias', 'Morochi Sanca', 'M', '985647', '1', 0, 15, 2, 'adminmorochi@gmail.com', '$2y$10$1cgVAb0RiWUg.Sptj8PgfulIb1jBSXc5FqlYi9fwy8Ijp/SFV6nSS', 'token prro', 'light_theme', 'yellow_thm', 'arial_f', 'f0iAf98KHYaRlZRfpa59zRpeKpWki2rAbiKQ6bXReqhDxtUwOBDuXdR27JiD', '2017-10-26 08:04:33', '2017-10-26 08:04:33'),
+(34, 'Ivan', 'Limachi Callisaya', 'M', '654/78', '1', 0, 16, 12, 'userivan@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-26 08:09:52', '2017-10-26 08:09:52'),
+(35, 'Leonardo', 'Ayala', 'M', '6579', '1', 0, 15, 3, 'userleo@gmail.com', '$2y$10$1cgVAb0RiWUg.Sptj8PgfulIb1jBSXc5FqlYi9fwy8Ijp/SFV6nSS', 'pinche token', 'light_theme', 'yellow_thm', 'arial_f', 'liDHS6SO4NhcsG5wCFXzOPP8hp3e6DEmX6sQvHXn8m4xunWZHYam19j1D1bE', '2017-10-26 08:29:31', '2017-10-26 08:29:31'),
+(36, 'Fernando', 'Montero', 'M', '5765', '1', 0, 16, 12, 'userfernando@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-26 08:30:29', '2017-10-26 08:30:29'),
+(37, 'Eduardo', 'Montaño', 'M', '354874', '1', 0, 16, 12, 'usereduardo@gmail.com', '', NULL, 'light_theme', 'red_thm', 'courier_f', NULL, '2017-10-26 08:31:08', '2017-10-26 11:44:10'),
+(38, 'Gonzalo', 'Aguilar', 'M', '354985', '1', 0, 16, 12, 'usergonzalo@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-10-26 08:31:59', '2017-10-26 08:31:59'),
+(39, 'Francisco', 'Moscoso', 'M', '654587', '1', 0, 17, 2, 'frans@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-11-23 19:09:48', '2017-11-23 19:09:48'),
+(40, 'Roxana', 'Pardo Mamani', 'F', '457815', '1', 0, 18, 13, 'Roxa@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-11-23 19:12:56', '2017-11-23 19:12:56'),
+(41, 'Jose Eduardo', 'Montaño Banegas', 'M', '9827218', '1', 0, 19, 2, 'adminEdu@gmail.com', '', NULL, 'dark_theme', 'red_thm', 'courier_f', NULL, '2017-11-25 20:02:36', '2017-11-25 20:03:37'),
+(42, 'Manuel', 'Vargas', 'M', '548721', '1', 0, 20, 14, 'manu@gmail.com', '', NULL, 'light_theme', 'yellow_thm', 'arial_f', NULL, '2017-11-25 20:07:11', '2017-11-25 20:07:11');
 
 -- --------------------------------------------------------
 
@@ -722,7 +724,8 @@ CREATE TABLE `workflows` (
 --
 
 INSERT INTO `workflows` (`id`, `descripcion`, `porcentaje`, `fechaI`, `fechaF`, `prioridad`, `id_institucion`, `id_documento`, `id_users`, `created_at`, `updated_at`) VALUES
-(1, 'Workflow Semanal', '0', '2017-10-25', '2017-10-28', 'Alta', 7, 1, 19, '2017-10-26 07:49:45', '2017-10-26 07:49:45');
+(3, 'Workflow Semanal', '10', '2017-10-28', '2017-12-29', 'alta', 13, 1, 33, '2017-11-29 21:29:53', '2017-11-29 21:29:53'),
+(4, 'Workflow de Contaduria', '10', '2017-12-29', '2018-01-28', 'alta', 13, 1, 33, '2017-11-30 00:01:31', '2017-11-30 00:01:31');
 
 -- --------------------------------------------------------
 
@@ -737,6 +740,7 @@ CREATE TABLE `workflow_usuarios` (
   `id_institucion` int(10) UNSIGNED NOT NULL,
   `id_workflow` int(10) UNSIGNED NOT NULL,
   `id_users` int(10) UNSIGNED NOT NULL,
+  `path` varchar(1024) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -745,8 +749,11 @@ CREATE TABLE `workflow_usuarios` (
 -- Volcado de datos para la tabla `workflow_usuarios`
 --
 
-INSERT INTO `workflow_usuarios` (`id`, `descripcion`, `fecha`, `id_institucion`, `id_workflow`, `id_users`, `created_at`, `updated_at`) VALUES
-(2, 'Realozar', '2017-10-25', 7, 1, 20, '2017-10-26 07:55:28', '2017-10-26 07:55:28');
+INSERT INTO `workflow_usuarios` (`id`, `descripcion`, `fecha`, `id_institucion`, `id_workflow`, `id_users`, `path`, `created_at`, `updated_at`) VALUES
+(6, 'inicio', '2017-11-29', 13, 3, 35, 'Workflow Semanal', '2017-11-29 21:46:17', '2017-11-29 21:46:17'),
+(7, 'inicializacion', '2017-11-29', 13, 4, 35, 'Workflow de Contaduria', '2017-11-30 00:06:36', '2017-11-30 00:06:36'),
+(8, 'finalizacion', '2017-11-29', 13, 4, 34, 'Workflow de Contaduria', '2017-11-30 00:06:37', '2017-11-30 00:06:37'),
+(9, 'asdas', '2017-11-29', 13, 3, 34, 'Workflow Semanal', '2017-11-30 05:11:31', '2017-11-30 05:11:31');
 
 --
 -- Índices para tablas volcadas
@@ -1014,12 +1021,12 @@ ALTER TABLE `detalle_sitios`
 -- AUTO_INCREMENT de la tabla `detalle_suscripcions`
 --
 ALTER TABLE `detalle_suscripcions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `directorios`
 --
 ALTER TABLE `directorios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `directorio_documentos`
 --
@@ -1044,7 +1051,7 @@ ALTER TABLE `grupos`
 -- AUTO_INCREMENT de la tabla `grupo_privilegios`
 --
 ALTER TABLE `grupo_privilegios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 --
 -- AUTO_INCREMENT de la tabla `historials`
 --
@@ -1089,7 +1096,7 @@ ALTER TABLE `sitios`
 -- AUTO_INCREMENT de la tabla `suscripcions`
 --
 ALTER TABLE `suscripcions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
@@ -1099,12 +1106,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `workflows`
 --
 ALTER TABLE `workflows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `workflow_usuarios`
 --
 ALTER TABLE `workflow_usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Restricciones para tablas volcadas
 --

@@ -2,6 +2,7 @@
 
 namespace Unisharp\Laravelfilemanager\controllers;
 
+use App\WorkflowUsuario;
 use Unisharp\Laravelfilemanager\traits\LfmHelpers;
 
 /**
@@ -25,7 +26,15 @@ class LfmController extends Controller
      */
     public function show()
     {
-        return view('laravel-filemanager::index');
+        error_reporting(E_ALL and E_NOTICE);
+        session_start();
+        $path =$_SESSION['path'];
+        if(strlen($path)>0){
+           $tok= WorkflowUsuario::verificar($path);
+            $_SESSION['path']="";
+        }
+        return view('laravel-filemanager::index',["dato"=>$tok,"ruta"=>$path]);
+        //return $tok;
     }
 
     public function getErrors()

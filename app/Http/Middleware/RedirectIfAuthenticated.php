@@ -75,7 +75,7 @@ class RedirectIfAuthenticated
             error_reporting(E_ALL and E_NOTICE);
             session_start();
             $_SESSION['id'] = DB::table('users')
-                ->select('users.id as id')
+                ->select('users.id as id','users.id_grupo as grupo')
                 ->where('users.email','=',$_SESSION['email'])
                 ->first();
 
@@ -98,7 +98,7 @@ class RedirectIfAuthenticated
             ///verificar si el q inicia ya tiene directorio para crearlo
         $iduser = $_SESSION['id'];
         if(!is_dir(public_path().'/files/'.$iduser->id)){
-            DirectorioController::crearDirPrincipales($iduser->id);
+            DirectorioController::crearDirPrincipales($iduser->id,$iduser->grupo);
         }
 
     }

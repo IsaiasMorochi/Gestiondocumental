@@ -131,10 +131,13 @@ class DirectorioController extends Controller
         return redirect('directorio');
     }
 
-    public static function crearDirPrincipales($id){
+    public static function crearDirPrincipales($id,$grupo){
+
         mkdir(public_path().'/files/'.$id);
         mkdir(public_path().'/files/'.$id.'/Workflow');
-        mkdir(public_path().'/files/'.$id.'/Workflow/Workflow Creados');
+        if($grupo!=3) {
+            mkdir(public_path() . '/files/' . $id . '/Workflow/Workflow Creados');
+        }
         mkdir(public_path().'/files/'.$id.'/Workflow/Workflow Asignados');
     }
 }
