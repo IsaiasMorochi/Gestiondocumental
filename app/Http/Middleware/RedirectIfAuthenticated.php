@@ -71,12 +71,19 @@ class RedirectIfAuthenticated
             User::obteneriduser();
 
 
-            error_reporting(E_ALL and E_NOTICE);
+
+
+
+
+
+        error_reporting(E_ALL and E_NOTICE);
             session_start();
             $_SESSION['id'] = DB::table('users')
                 ->select('users.id as id')
                 ->where('users.email','=',$_SESSION['email'])
                 ->first();
+
+      //  User::actualizarUsuarioO();
 
             error_reporting(E_ALL and E_NOTICE);
             session_start();
@@ -93,6 +100,10 @@ class RedirectIfAuthenticated
             $bitacoraf->tabla="users";
             $bitacoraf->usuario=$a->nombre;
             event(new llamada($bitacoraf));
+
+            User::actualizarUsuarioO();
+            User::cantuserO();
+            User::obteneriduserO();
 
             /* return json_encode(array("institucion"=>$prueba));*/
 

@@ -69,6 +69,7 @@ class RegisterController extends Controller
             'genero' => $data['genero'],
             'ci' => $data['ci'],
             'estado' => 'Activo',
+            'online'=> '0',
             'id_dpto' => $data['id_dpto'],
             'id_grupo' => $data['id_grupo'],
             'email' => $data['email'],

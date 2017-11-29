@@ -50,6 +50,7 @@ class LoginController extends Controller
             User::ObtenerInsertModElimModulo4();
             User::ObtenerInsertModElimModulo9();
             User::obteneriduser();
+            User::obteneriduserO();
 
             error_reporting(E_ALL and E_NOTICE);
             session_start();

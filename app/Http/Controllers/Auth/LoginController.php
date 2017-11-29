@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Bitacora;
 use App\Events\llamada;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\Array_;
 
 class LoginController extends Controller
 {
@@ -21,6 +25,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+
 
     /**
      * Where to redirect users after login.
@@ -43,13 +48,15 @@ class LoginController extends Controller
         error_reporting(E_ALL and E_NOTICE);
         session_start();
         $a = $_SESSION['nombre'];
-
-
         $bitacoraf= new Bitacora();
         $bitacoraf->operacion="cerrar sesion";
         $bitacoraf->tabla="users";
         $bitacoraf->usuario="$a->nombre";
         event(new llamada($bitacoraf));
+
+        //User::actualizarUsuarioO();
+        User::actualizarUsuarioB();
+
 
 
 
