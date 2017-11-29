@@ -31,7 +31,7 @@ class Suscripcion extends Model
         Suscripcion::create(array(
             'descripcion'=>$descripcion,
             'id_institucion'=>$idinst,
-            '$id_users'=>$iduser
+            'id_users'=>$iduser
         ));
     }
 }

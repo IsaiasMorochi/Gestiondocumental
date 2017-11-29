@@ -112,9 +112,10 @@ class SuscripcionController extends Controller
             ->first();*/
         //NO QUIERE INSERTAR XQ NO RECUPERA EL ID DE INSTITUCION
         Suscripcion::insertar('activo',$inst->id,$iduser->id);
-        DetalleSuscripcion::insertar($inst->id,DB::table('suscripcions')->select('id')->orderBy('id','desc')->first(),$substring);
+        DetalleSuscripcion::insertar($inst->id,(DB::table('suscripcions')->select('id')->orderBy('id','desc')->first())->id,$substring);
 
-        return view ('Herramienta.ConsultarBitacora.index',["url"=>$i,"pos"=>$req->dato,"substring"=>$substring]);
+        return back();
+        //return view ('Herramienta.ConsultarBitacora.index',["url"=>$inst->id,"pos"=>$iduser->id,"substring"=>(DB::table('suscripcions')->select('id')->orderBy('id','desc')->first())->id]);
     }
     public function edit($datos)
     {
