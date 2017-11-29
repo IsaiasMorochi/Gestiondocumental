@@ -50,6 +50,16 @@ class LoginController extends Controller
             User::ObtenerInsertModElimModulo4();
             User::ObtenerInsertModElimModulo9();
             User::obteneriduser();
+            User::obteneriduserO();
+
+            error_reporting(E_ALL and E_NOTICE);
+            session_start();
+            $_SESSION['id'] = DB::table('users')
+                ->select('users.id as id')
+                ->where('users.email','=',$_SESSION['email'])
+                ->first();
+
+            $aa = $_SESSION['id'];
 
 
             error_reporting(E_ALL and E_NOTICE);

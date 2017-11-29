@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'apellido', 'genero', 'ci', 'estado', 'id_dpto', 'id_grupo', 'email', 'password','tema','cbarra','letra'
+        'nombre', 'apellido', 'genero', 'ci', 'estado','online', 'id_dpto', 'id_grupo', 'email', 'password','tema','cbarra','letra'
     ];
 
     /**
@@ -79,6 +79,7 @@ class User extends Authenticatable
                 'genero'=>$request->get('genero'),
                 'ci'=>$request->get('ci'),
                 'estado'=>'1',
+                'online'=>'0',
                 'id_dpto'=>$request->get('id_dpto'),
                 'id_grupo'=>$id_grupo,
                 'email'=>$request->get('email'),
@@ -465,7 +466,25 @@ class User extends Authenticatable
         }
     }
 
+
+    public static function obteneriduserO(){
+        error_reporting(E_ALL and E_NOTICE);
+        session_start();
+        $idI=$_SESSION['institucion'];
+
+        error_reporting(E_ALL and E_NOTICE);
+        session_start();
+        $_SESSION['usernameO'] = DB::table('users as u')
+            ->join('departamentos as d','d.id','=','u.id_dpto')
+            ->join('institucions as i','i.id','=','d.id_institucion')
+            ->select('u.id as idU','u.nombre as nombreU','u.online as online','d.nombre as nombreD')
+            ->where('i.id','=',$idI->id)
+            ->get();
+    }
+
+    
     public static function obteneriduser($email){
+
         error_reporting(E_ALL and E_NOTICE);
         session_start();
         $_SESSION['username'] = DB::table('users')
@@ -473,7 +492,6 @@ class User extends Authenticatable
             ->where('users.email','=',$_SESSION['email'])
             ->first();
     }
-
 
 
 
@@ -540,6 +558,47 @@ class User extends Authenticatable
                 ->get();
 
         return json_encode(array("workflow" => $data));
+    }
+
+    public static  function actualizarUsuarioO(){
+
+
+        error_reporting(E_ALL and E_NOTICE);
+        session_start();
+
+        DB::table('users')->where('users.email','=',$_SESSION['email'])
+            ->update([
+                'online'=>'1'
+            ]);
+
+    }
+
+    public static  function actualizarUsuarioB(){
+
+
+        error_reporting(E_ALL and E_NOTICE);
+        session_start();
+
+        DB::table('users')->where('users.email','=',$_SESSION['email'])
+            ->update([
+                'online'=>'0'
+            ]);
+
+    }
+
+    public static  function cantuserO(){
+        error_reporting(E_ALL and E_NOTICE);
+        session_start();
+        $idI=$_SESSION['institucion'];
+
+        error_reporting(E_ALL and E_NOTICE);
+        session_start();
+        $_SESSION['cantO'] = DB::table('users as u')
+            ->join('departamentos as d','d.id','=','u.id_dpto')
+            ->join('institucions as i','i.id','=','d.id_institucion')
+            ->where('i.id','=',$idI->id)
+            ->where('u.online','=','1')
+            ->get()->count('u.id as cant');
     }
 
 }

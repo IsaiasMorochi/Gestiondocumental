@@ -331,9 +331,9 @@ $a=$_SESSION['username'];?>
     <div class="icon"><i class="fa fa-user"></i></div> <p>Online (4)</p>
   </div>
   <div class="content">
-    <p class="title">Family</p>
+    <p class="title">Operadores</p>
     <ul class="nav nav-pills nav-stacked contacts">
-      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> Steven Smith</a></li>
+      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> Juan Jose</a></li>
       <li class="online"><a href="#"><i class="fa fa-circle-o"></i> John Doe</a></li>
       <li class="online"><a href="#"><i class="fa fa-circle-o"></i> Michael Smith</a></li>
       <li class="busy"><a href="#"><i class="fa fa-circle-o"></i> Chris Rogers</a></li>
@@ -408,29 +408,34 @@ $a=$_SESSION['username'];?>
     <input type="text" class="form-control chat-search" placeholder=" Search">
   </div>
   <div href="#" class="sub-header">
-    <div class="icon"><i class="fa fa-user"></i></div> <p>Online (4)</p>
+      <?php
+      error_reporting(E_ALL and E_NOTICE);
+      session_start();
+      $userC=$_SESSION['cantO'];?>
+
+    <div class="icon"><i class="fa fa-user"></i></div> <p>Online ( {{$userC}} )</p>
   </div>
+
   <div class="content">
-    <p class="title">Family</p>
+      <?php
+      error_reporting(E_ALL and E_NOTICE);
+      session_start();
+      $user=$_SESSION['usernameO'];?>
+
+
+    <p class="title">Usuarios en Linea</p>
     <ul class="nav nav-pills nav-stacked contacts">
-      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> Steven Smith</a></li>
-      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> John Doe</a></li>
-      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> Michael Smith</a></li>
-      <li class="busy"><a href="#"><i class="fa fa-circle-o"></i> Chris Rogers</a></li>
+      @foreach($user as $u)
+        @if($u->online==1)
+      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> {{$u->nombreU}}</a></li>
+        @else
+          <li class="busy"><a href="#"><i class="fa fa-circle-o"></i> {{$u->nombreU}}</a></li>
+        @endif
+      @endforeach
+
     </ul>
     
-    <p class="title">Friends</p>
-    <ul class="nav nav-pills nav-stacked contacts">
-      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> Vernon Philander</a></li>
-      <li class="outside"><a href="#"><i class="fa fa-circle-o"></i> Kyle Abbott</a></li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> Dean Elgar</a></li>
-    </ul>   
-    
-    <p class="title">Work</p>
-    <ul class="nav nav-pills nav-stacked contacts">
-      <li><a href="#"><i class="fa fa-circle-o"></i> Dale Steyn</a></li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> Morne Morkel</a></li>
-    </ul>
+
     
   </div>
   <div id="chat-box">

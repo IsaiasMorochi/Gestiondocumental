@@ -3,7 +3,9 @@
 $middleware = array_merge(\Config::get('lfm.middlewares'), [
     '\Unisharp\Laravelfilemanager\middlewares\MultiUser',
     '\Unisharp\Laravelfilemanager\middlewares\CreateDefaultFolder',
+
 ]);
+
 
 
 
